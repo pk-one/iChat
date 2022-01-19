@@ -17,6 +17,8 @@
 		A0753B95279777120073517C /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0753B94279777120073517C /* UIColor + Extension.swift */; };
 		A0753B97279778F40073517C /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0753B96279778F40073517C /* UILabel + Extension.swift */; };
 		A0753B99279779C80073517C /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0753B98279779C80073517C /* UIImageView + Extension.swift */; };
+		A0753B9D279862840073517C /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0753B9C279862840073517C /* ButtonFormView.swift */; };
+		A0753B9F279866930073517C /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0753B9E279866930073517C /* UIStackView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		A0753B94279777120073517C /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		A0753B96279778F40073517C /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A0753B98279779C80073517C /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		A0753B9C279862840073517C /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
+		A0753B9E279866930073517C /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,16 +71,34 @@
 				A02ED3AB279766E60010B22F /* AppDelegate.swift */,
 				A02ED3AD279766E60010B22F /* SceneDelegate.swift */,
 				A02ED3AF279766E60010B22F /* AuthViewController.swift */,
-				A0753B98279779C80073517C /* UIImageView + Extension.swift */,
-				A0753B96279778F40073517C /* UILabel + Extension.swift */,
-				A0753B94279777120073517C /* UIColor + Extension.swift */,
-				A0753B92279775CE0073517C /* UIFont + Extension.swift */,
-				A0753B902797738B0073517C /* UIButton + Extension.swift */,
+				A0753B9B279856A90073517C /* Extensions */,
 				A02ED3B4279766E80010B22F /* Assets.xcassets */,
 				A02ED3B6279766E80010B22F /* LaunchScreen.storyboard */,
 				A02ED3B9279766E80010B22F /* Info.plist */,
 			);
 			path = iChat;
+			sourceTree = "<group>";
+		};
+		A0753B9A2798569B0073517C /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				A0753B98279779C80073517C /* UIImageView + Extension.swift */,
+				A0753B96279778F40073517C /* UILabel + Extension.swift */,
+				A0753B94279777120073517C /* UIColor + Extension.swift */,
+				A0753B92279775CE0073517C /* UIFont + Extension.swift */,
+				A0753B902797738B0073517C /* UIButton + Extension.swift */,
+				A0753B9E279866930073517C /* UIStackView + Extension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		A0753B9B279856A90073517C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0753B9C279862840073517C /* ButtonFormView.swift */,
+				A0753B9A2798569B0073517C /* UIKit */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +174,8 @@
 				A0753B93279775CE0073517C /* UIFont + Extension.swift in Sources */,
 				A02ED3B0279766E60010B22F /* AuthViewController.swift in Sources */,
 				A02ED3AC279766E60010B22F /* AppDelegate.swift in Sources */,
+				A0753B9F279866930073517C /* UIStackView + Extension.swift in Sources */,
+				A0753B9D279862840073517C /* ButtonFormView.swift in Sources */,
 				A0753B97279778F40073517C /* UILabel + Extension.swift in Sources */,
 				A0753B99279779C80073517C /* UIImageView + Extension.swift in Sources */,
 				A0753B95279777120073517C /* UIColor + Extension.swift in Sources */,

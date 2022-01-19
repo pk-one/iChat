@@ -14,5 +14,6 @@ extension UIImageView {
         
         self.image = image
         self.contentMode = contentMode
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
