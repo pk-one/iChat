@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         let loginWithView = ButtonFormView(label: loginWithLabel, button: googleButton)
+        googleButton.customizeGoogleButton()
         
         emailStackView = UIStackView(arrangedSubviews: [emailLabel,
                                                         emailTextField],

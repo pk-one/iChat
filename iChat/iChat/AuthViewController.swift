@@ -35,6 +35,7 @@ class AuthViewController: UIViewController {
         view.addSubview(logoImageView)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
+        googleButton.customizeGoogleButton()
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormView(label: alreadyOnboardLabel, button: loginButton)
         
