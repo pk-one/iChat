@@ -129,10 +129,10 @@ struct LoginVCProvider: PreviewProvider {
     
     struct ContainerView: UIViewControllerRepresentable {
         
-        let LoginVC = LoginViewController()
+        let loginVC = LoginViewController()
         
         func makeUIViewController(context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) -> LoginViewController {
-            return LoginVC
+            return loginVC
         }
         
         func updateUIViewController(_ uiViewController: LoginVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) {
