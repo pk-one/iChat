@@ -62,7 +62,7 @@ class ListViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseID)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID2")
+        collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseID)
     }
     
     private func reloadData() {
@@ -89,9 +89,7 @@ extension ListViewController {
             
             switch section {
             case .waitingChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID2", for: indexPath)
-                cell.backgroundColor = .systemRed
-                return cell
+                return self.configure(cellType: WaitingChatCell.self, with: chat, indexPath: indexPath)
             case .activeChats:
                 return self.configure(cellType: ActiveChatCell.self, with: chat, indexPath: indexPath)
             }
@@ -110,7 +108,6 @@ extension ListViewController {
                 return self.createWaitingChats()
             case .activeChats:
                 return self.createActiveChats()
-
             }
         }
         return layout
