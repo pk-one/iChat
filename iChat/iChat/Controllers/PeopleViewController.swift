@@ -52,7 +52,8 @@ class PeopleViewController: UIViewController {
         
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseID)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseID)
     }
     
     private func reloadData() {
@@ -78,9 +79,7 @@ extension PeopleViewController {
             
             switch section {
             case .users:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
-                cell.backgroundColor = .systemBlue
-                return cell
+                return self.configure(collectionView: collectionView ,cellType: UserCell.self, with: user, indexPath: indexPath)
             }
         })
         
