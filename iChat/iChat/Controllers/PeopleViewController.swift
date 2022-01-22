@@ -10,10 +10,28 @@ import UIKit
 
 class PeopleViewController: UIViewController {
     
+    private let users = Bundle.main.decode([MUser].self, from: "users.json")
+    private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
+    
+    private enum Section: Int, CaseIterable {
+        case users
+        
+        func description(usersCount: Int) -> String {
+            switch self {
+            case .users:
+                return "\(usersCount) people nearby"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
         searchBar()
+        setupCollectionView()
+        createdDataSource()
+        reloadData()
     }
     
     private func searchBar() {
@@ -25,8 +43,110 @@ class PeopleViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
+    
+    private func setupCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .specialMainWhite
+        view.addSubview(collectionView)
+        
+        
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseID)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
+        snapshot.appendSections([.users])
+        snapshot.appendItems(users, toSection: .users)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
 }
 
+//MARK: - Data Source
+extension PeopleViewController {
+    
+    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: MChat, indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseID, for: indexPath) as? T else { fatalError("Unable do dequeue \(cellType)")}
+            cell.configure(with: value)
+            return cell
+    }
+    
+    private func createdDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { collectionView, indexPath, user in
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            
+            switch section {
+            case .users:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+                cell.backgroundColor = .systemBlue
+                return cell
+            }
+        })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseID, for: indexPath) as? SectionHeader else { fatalError("Cannot create new section header")}
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind ")}
+            
+            let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
+            sectionHeader.configure(text: section.description(usersCount: items?.count ?? 0), font: .systemFont(ofSize: 36, weight: .light), textColor: .label)
+
+            return sectionHeader
+        }
+    }
+}
+
+//MARK: - Setup Layout
+extension PeopleViewController {
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
+            guard let section = Section(rawValue: sectionIndex) else { fatalError("Unknown section kind") }
+            
+            switch section {
+            case .users:
+                return self.createUsersSection()
+            }
+        }
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        return layout
+    }
+    
+    private func createUsersSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let grooupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .fractionalWidth(0.6))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: grooupSize, subitem: item, count: 2)
+        let spasing = CGFloat(15)
+        group.interItemSpacing = .fixed(spasing)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spasing
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16,
+                                                             leading: 15,
+                                                             bottom: 0,
+                                                             trailing: 15)
+        let headerSection = createSectionHeader()
+        section.boundarySupplementaryItems = [headerSection]
+        return section
+    }
+
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                       heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+        return sectionHeader
+    }
+    
+}
 
 //MARK: - SwiftUI
 import SwiftUI
