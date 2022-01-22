@@ -61,7 +61,7 @@ class ListViewController: UIViewController {
         collectionView.backgroundColor = .specialMainWhite
         view.addSubview(collectionView)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseID)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID2")
     }
     
@@ -76,6 +76,13 @@ class ListViewController: UIViewController {
 
 //MARK: - Data Source
 extension ListViewController {
+    
+    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: MChat, indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseID, for: indexPath) as? T else { fatalError("Unable do dequeue \(cellType)")}
+            cell.configure(with: value)
+            return cell
+    }
+    
     private func createdDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, MChat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
@@ -86,9 +93,7 @@ extension ListViewController {
                 cell.backgroundColor = .systemRed
                 return cell
             case .activeChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
-                cell.backgroundColor = .systemBlue
-                return cell
+                return self.configure(cellType: ActiveChatCell.self, with: chat, indexPath: indexPath)
             }
         })
     }
