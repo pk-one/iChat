@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A017C7A3279C35F2004B158F /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017C7A2279C35F2004B158F /* SectionHeader.swift */; };
 		A02ED3AC279766E60010B22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02ED3AB279766E60010B22F /* AppDelegate.swift */; };
 		A02ED3AE279766E60010B22F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02ED3AD279766E60010B22F /* SceneDelegate.swift */; };
 		A02ED3B0279766E60010B22F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02ED3AF279766E60010B22F /* AuthViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A017C7A2279C35F2004B158F /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		A02ED3A8279766E60010B22F /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02ED3AB279766E60010B22F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A02ED3AD279766E60010B22F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				A0E0DEAA279B6A7C009BA28B /* ListViewController.swift */,
 				A0E0DEB0279B6D33009BA28B /* PeopleViewController.swift */,
 				A0FF785D279C1C84008165A5 /* Cell */,
+				A017C7A2279C35F2004B158F /* SectionHeader.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				A0E0DEAB279B6A7D009BA28B /* ListViewController.swift in Sources */,
 				A0FF7865279C2EEA008165A5 /* SelfConfiguringCell.swift in Sources */,
+				A017C7A3279C35F2004B158F /* SectionHeader.swift in Sources */,
 				A0753BA3279870540073517C /* OneLineTextField.swift in Sources */,
 				A0FF7861279C2812008165A5 /* GradientView.swift in Sources */,
 				A0E0DEAF279B6CF1009BA28B /* MainTabBarController.swift in Sources */,
