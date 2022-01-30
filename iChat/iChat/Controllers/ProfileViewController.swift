@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     let nameLabel = UILabel(text: "Andrey Velvet", font: .systemFont(ofSize: 20, weight: .light))
     let aboutMeLabel = UILabel(text: "You have the opportunity to chat with the best main in the world!", font: .systemFont(ofSize: 16, weight: .light))
     
-    let myTextField = UITextField()
+    let myTextField = InsertableTextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,14 @@ class ProfileViewController: UIViewController {
         aboutMeLabel.numberOfLines = 0
         containerView.backgroundColor = .specialMainWhite
         containerView.layer.cornerRadius = 30
-        
-        myTextField.borderStyle = .roundedRect
+    
+        if let button = myTextField.rightView as? UIButton {
+            button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func sendMessage() {
+        print(#function)
     }
 }
 

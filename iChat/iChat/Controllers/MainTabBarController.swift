@@ -10,11 +10,11 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let listViewController = ListViewController()
-    let peopleViewController = PeopleViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let listViewController = ListViewController()
+        let peopleViewController = PeopleViewController()
         
         setupTabBar()
         
