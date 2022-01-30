@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0175E8027A71C7800D8D894 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0175E7F27A71C7800D8D894 /* ProfileViewController.swift */; };
 		A017C7A3279C35F2004B158F /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017C7A2279C35F2004B158F /* SectionHeader.swift */; };
 		A017C7A5279C53D0004B158F /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = A017C7A4279C53D0004B158F /* users.json */; };
 		A017C7A9279C54B2004B158F /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017C7A8279C54B2004B158F /* MUser.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0175E7F27A71C7800D8D894 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A017C7A2279C35F2004B158F /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		A017C7A4279C53D0004B158F /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		A017C7A8279C54B2004B158F /* MUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				A0E0DEAE279B6CF1009BA28B /* MainTabBarController.swift */,
 				A0E0DEAA279B6A7C009BA28B /* ListViewController.swift */,
 				A0E0DEB0279B6D33009BA28B /* PeopleViewController.swift */,
+				A0175E7F27A71C7800D8D894 /* ProfileViewController.swift */,
 				A0FF785D279C1C84008165A5 /* Cell */,
 				A017C7A6279C53F1004B158F /* Header */,
 			);
@@ -300,6 +303,7 @@
 				A0FF785F279C1CA1008165A5 /* ActiveChatCell.swift in Sources */,
 				A0E0DEA9279B63BA009BA28B /* UISegmentedControl + Extension.swift in Sources */,
 				A0E0DEB1279B6D33009BA28B /* PeopleViewController.swift in Sources */,
+				A0175E8027A71C7800D8D894 /* ProfileViewController.swift in Sources */,
 				A0753B93279775CE0073517C /* UIFont + Extension.swift in Sources */,
 				A0FF785C279B842A008165A5 /* Bundle-Decodable.swift in Sources */,
 				A02ED3B0279766E60010B22F /* AuthViewController.swift in Sources */,

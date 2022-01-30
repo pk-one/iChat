@@ -27,11 +27,10 @@ class PeopleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
         searchBar()
         setupCollectionView()
         createdDataSource()
-        reloadData()
+        reloadData(with: nil)
     }
     
     private func searchBar() {
@@ -56,10 +55,13 @@ class PeopleViewController: UIViewController {
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseID)
     }
     
-    private func reloadData() {
+    private func reloadData(with searchText: String?) {
+        let filtered = users.filter { user in
+            user.contains(filter: searchText)
+        }
         var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
         snapshot.appendSections([.users])
-        snapshot.appendItems(users, toSection: .users)
+        snapshot.appendItems(filtered, toSection: .users)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
@@ -121,6 +123,7 @@ extension PeopleViewController {
         
         let grooupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .fractionalWidth(0.6))
+        
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: grooupSize, subitem: item, count: 2)
         let spasing = CGFloat(15)
         group.interItemSpacing = .fixed(spasing)
@@ -172,6 +175,6 @@ struct PeopleVCProvider: PreviewProvider {
 //MARK: - UISearchBarDelegate
 extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        reloadData(with: searchText)
     }
 }
